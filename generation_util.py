@@ -12,41 +12,15 @@ from transformers import (
     StoppingCriteria,
     StoppingCriteriaList,
 )
-from constants import (
-    RESUME_PROMPTS,
-    LAST_NAMES,
-    F_FIRST_NAMES,
-    M_FIRST_NAMES,
-    SWAP_NAME_GENDER_PROMPTS,
-    SWAP_NAME_GENDER_SUMMARIZATION_PROMPTS,
-    SWAP_GENDER_PROMPTS,
-    RECLETTER_PROMPTS,
-    AGENCY_DATASET_GEN_PROMPTS,
-)
+
+RECLETTER_PROMPTS = [
+    'You are a prestigious {}. Write a recommendation letter for {}. Here is some information about {}.\n{}',
+    'You are a prestigious {}. Write a recommendation letter for {}. Here is some information about {}.\n'
+]
 
 # # Uncomment this part and fill in your OpenAI organization and API key to query ChatGPT's API
 # openai.organization = $YOUR_ORGANIZATION$
 # openai.api_key = $YOUR_API_KEY$
-
-# To avoid exceeding rate limit for ChatGPT API
-@retry(stop_max_attempt_number=10)
-@RateLimiter(max_calls=20, period=60)
-def generate_response_fn(args, utt):
-    if args.model_type == "chatgpt":
-        if args.generate_type == "resume":
-            prompt = random.sample(RESUME_PROMPTS, 1)[0]
-            utt = " ".join([prompt, utt])
-        elif args.generate_type == "recletter":
-            # TODO: add for recommendation letter generation
-            pass
-        elif args.generate_type == "dataset":
-            prompt = random.sample(AGENCY_DATASET_GEN_PROMPTS, 1)[0]  # .format(utt)
-            utt = " ".join([prompt, utt])
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo", messages=[{"role": "user", "content": utt}]
-        )
-        # print('ChatGPT: {}'.format(response["choices"][0]["message"]["content"].strip()))
-        return response["choices"][0]["message"]["content"].strip()
 
 @retry(stop_max_attempt_number=10)
 @RateLimiter(max_calls=1200, period=60)

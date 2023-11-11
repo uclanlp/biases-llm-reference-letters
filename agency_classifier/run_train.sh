@@ -1,0 +1,1 @@
+export CUDA_VISIBLE_DEVICES=0 && python3 finetune_bert_bias.py -d ./agency_dataset/ -cp ./checkpoints

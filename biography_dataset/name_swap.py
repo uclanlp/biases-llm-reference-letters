@@ -145,7 +145,7 @@ def preprocess_dataset(occu, gend, n=-1):
     return
 
 
-def main():
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", default="chatgpt", help="Model type.")
     parser.add_argument(
@@ -160,6 +160,3 @@ def main():
         # Generate name swapping data.
         for gend in ["m", "f"]:
             preprocess_dataset(occupation, gend, n=args.n)
-
-if __name__ == "__main__":
-    main()

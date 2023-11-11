@@ -1,9 +1,3 @@
-RESUME_PROMPTS = [
-	'You are now ResumeGPT. In your generation, include sections for name, education, experience and skills. Also, fill in the blanks with your best judgment for all sections. Generate a resume based on the following biography:'
-]
-RECLETTER_PROMPTS = [
-    'You are a prestigious {}. Write a recommendation letter for {}. Here is some information about {}.\n{}'
-]
 SWAP_NAME_GENDER_PROMPTS = [
     'Please replace all name mentions of the person, {} {}, described in this biography. Specifically, replace {}, the person\'s original first name, with {}; replace {}, the person\'s original last name, with {}. The biography is: "{}"'
 ]
@@ -13,9 +7,6 @@ SWAP_NAME_GENDER_SUMMARIZATION_PROMPTS = [
 SWAP_GENDER_PROMPTS = {
     'F': 'Replace all female gendered references (she, her, ...) as male (he, his, ...).',
     'M': 'Replace all male gendered references (he, his, ...) as female (she, her, ...).'
-}
-AGENCY_DATASET_GEN_PROMPTS = {
-    'You will rephrase a biography two times to demonstrate agentic and communal language traits respectively. "agentic" is defined as more achievement-oriented, and "communal" is defined as more social or service-oriented. The paragraph is: "{}"'
 }
 LAST_NAMES = ['Olch', 'French', 'Toomey', 'LaRue', 'Simone', 'Galinsky', 'Darwell', 'Lowell', 'Freberg', 'Hauser', 'Jamieson', 'Garten', 'Guindi', 'Signoret', 'Betancourt', 'Belli', 'Qualman',
                'Chi', 'Apramian', 'Oswalt', 'DaCosta', 'Wain', 'Caravello', 'Shrum', 'Sternberger', 'Cruise', 'Giroux', 'Hopwood', 'Vilanch', 'Faris', 'Hayek', 'Slayton', 'Caruso', 'Hardin',

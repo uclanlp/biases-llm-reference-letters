@@ -1,0 +1,1 @@
+python split_biasbios.py -if ./agency_bios/BIOS_sampled_preprocessed.csv -of ./agency_dataset/
