@@ -48,7 +48,10 @@ sh ./evaluation_scripts/run_lexical_content_eval.sh
 ```
 
 #### Biases in Language Style
-To evaluate Biases in Language Style for ChatGPT-generated letters, run:
+Before running evaluation on biases in language style, make sure that you have trained your own Language Agency Classifier or have downloaded our trained classifier checkpoint in Google Drive via link:
+> https://drive.google.com/drive/folders/119pIbWMrNLwOCxj9XwTBXA-kY02nytOc?usp=drive_link
+You should then place the downloaded checkpoint folder under the `/agency_classifier/checkpoints/` directory.
+Then, to evaluate Biases in Language Style for ChatGPT-generated letters, run:
 ```
 sh ./evaluation_scripts/run_language_style_eval.sh
 ```

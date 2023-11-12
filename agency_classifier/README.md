@@ -16,7 +16,9 @@ sh run_split.sh
 ```
 The processed datasets will be stored in `/agency_classifier/agency_dataset/`
 ## Training the Language Agency Classifier
-You may refer to the following command to train the language agency classifier using the generated dataset. Alternatively, access our trained classifier checkpoint in Google Drive and place it under the `/agency_classifier/checkpoints/` directory.
+You may refer to the following command to train the language agency classifier using the generated dataset. Alternatively, access our trained classifier checkpoint in Google Drive at:
+> https://drive.google.com/drive/folders/119pIbWMrNLwOCxj9XwTBXA-kY02nytOc?usp=drive_link
+You should then place the downloaded checkpoint folder under the `/agency_classifier/checkpoints/` directory.
 To train the language agency classifier, run:
 ```
 # Make sure you are still in the agency_classifier directory
