@@ -7,7 +7,9 @@ Arxiv version available at: https://arxiv.org/abs/2310.09219
 Refer to the following steps to generate recommendation letters using ChatGPT and other LLMs.
 
 ### Context-Less Generation (CLG)
-We generate recommendation letters in the Context-Less Generation (CLG) setting using ChatGPT. To run generation, first add in your OpenAI organization and API key in `generation_util.py`. Then, use the following command to generate using ChatGPT:
+We generate recommendation letters in the Context-Less Generation (CLG) setting using ChatGPT. 
+
+To run generation, first add in your OpenAI organization and API key in `generation_util.py`. Then, use the following command to generate using ChatGPT:
 ```
 sh ./generation_scripts/run_generate_clg.sh
 ```
@@ -50,7 +52,9 @@ sh ./evaluation_scripts/run_bias_clg.sh
 ```
 
 ### Context-Based Generation (CBG)
-Under CBG setting, we evaluate generated letters from two perspectives: **Biases in Lexical Content** and **Biases in Language Style**. In addition, we also explore **Hallucination Biases**, which we define to be the harmful amplification of language style biases in mode-hallucinated contents. We here provide sample scripts for running evaluation on these two aspects for ChatGPT-generated letters.
+Under CBG setting, we evaluate generated letters from two perspectives: **Biases in Lexical Content** and **Biases in Language Style**. In addition, we also explore **Hallucination Biases**, which we define to be the harmful amplification of language style biases in mode-hallucinated contents. 
+
+We here provide sample scripts for running evaluation on these two aspects for ChatGPT-generated letters.
 
 #### Biases in Lexical Content
 To evaluate Biases in Lexical Content for ChatGPT-generated letters, run:
@@ -69,7 +73,9 @@ Next, to evaluate Biases in Language Style for ChatGPT-generated letters, run:
 sh ./evaluation_scripts/run_language_style_eval.sh
 ```
 
-Result of evaluation will be saved in the `/evaluated_letters/chatgpt/cbg/` directory. Alternatively, you can directly run a t-test using our experiment output file at `/evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval.csv` by running:
+Result of evaluation will be saved in the `/evaluated_letters/chatgpt/cbg/` directory. 
+
+Alternatively, you can directly run a t-test using our experiment output file at `/evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval.csv` by running:
 ```
 python ttest.py -if ./evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval.csv
 ```
@@ -89,7 +95,9 @@ Result of hallucination detectrion will be saved in the `/evaluated_letters/chat
 sh ./evaluation_scripts/run_language_style_eval_hallucination.sh
 ```
 
-Similar to Biases in Language Style on the original letter, Result of evaluation for hallucination biases will be saved in the `/evaluated_letters/chatgpt/cbg/` directory. Alternatively, you can directly run a t-test using our experiment output file at `/evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval_hallucination-eval.csv` by running:
+Similar to Biases in Language Style on the original letter, Result of evaluation for hallucination biases will be saved in the `/evaluated_letters/chatgpt/cbg/` directory. 
+
+Alternatively, you can directly run a t-test using our experiment output file at `/evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval_hallucination-eval.csv` by running:
 ```
 python ttest.py -if ./evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval_hallucination-eval.csv --eval_hallucination_part
 ```
