@@ -4,7 +4,7 @@ import sys
 import re
 import random
 import pandas as pd
-from constants import LAST_NAMES, F_FIRST_NAMES, M_FIRST_NAMES
+from word_constants import LAST_NAMES, F_FIRST_NAMES, M_FIRST_NAMES
 from generation_util import *
 from tqdm import tqdm
 import argparse

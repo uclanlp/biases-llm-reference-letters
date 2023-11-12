@@ -14,4 +14,4 @@ sh run_sampling_f.sh
 # Make sure you are still in the biography_dataset directory
 python name_swap.py
 ```
-The final pre-processed biography datasets are grouped by occupations and split into multiple csv files that are stored in the /biography_dataset/preprocessed_bios folder.
+The final pre-processed biography datasets are grouped by occupations and genders, and are splitted into multiple csv files that are stored in the /biography_dataset/preprocessed_bios folder.

@@ -1,0 +1,1 @@
+python biases_lexical_content.py -f ./generated_letters/chatgpt/cbg/all_2_para_w_chatgpt.csv -m chatgpt

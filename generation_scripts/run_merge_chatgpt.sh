@@ -1,0 +1,1 @@
+python postprocessing.py -df ./generated_letters/chatgpt/cbg -m chatgpt -t merge

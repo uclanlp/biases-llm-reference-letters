@@ -1,0 +1,1 @@
+python biases_string_matching.py -f ./generated_letters/chatgpt/clg/clg_letters.csv -m chatgpt

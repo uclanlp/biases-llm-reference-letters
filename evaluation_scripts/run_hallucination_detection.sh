@@ -1,0 +1,1 @@
+python hallucination_detection.py -if ./generated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval.csv -m chatgpt
