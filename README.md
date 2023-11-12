@@ -11,25 +11,35 @@ We generate recommendation letters in the Context-Less Generation (CLG) setting 
 ```
 sh ./generation_scripts/run_generate_clg.sh
 ```
+
 Alternatively, access our generated CLG letters stored in `./generated_letters/chatgpt/clg/clg_letters.csv`
 
 ### Context-Based Generation (CBG)
-We generate recommendation letters in the Context-Based Generation (CBG) setting using ChatGPT. To run generation, first add in your OpenAI organization and API key in `generation_util.py`. Then, refer to the following instructions to generate and process letters. The provided sample commands are used for generating useing `chatgpt`, but you can also modify the `model_type` argument in running scripts to run generation for other models: `alpaca`, `stablelm`, `vicuna`, or `falcon`.
+We generate recommendation letters in the Context-Based Generation (CBG) setting using ChatGPT. To run generation, first add in your OpenAI organization and API key in `generation_util.py`. 
+
+Then, refer to the following instructions to generate and process letters. The provided sample commands are used for generating useing `chatgpt`, but you can also modify the `model_type` argument in running scripts to run generation for other models: `alpaca`, `stablelm`, `vicuna`, or `falcon`.
+
 1. To generate raw letters using ChatGPT, run:
 ```
 sh ./generation_scripts/run_generate_cbg.sh
 ```
+
 Outputs of the generated letters are grouped by occupations and genders, and are stored in separate csv files in the `/generated_letters/chatgpt/cbg/` directory.
+
 2. Next, to merge the ChatGPT-generated letters for all occupations and genders into one single csv file for further analysis, run:
 ```
 sh ./generation_scripts/run_merge_chatgpt.sh
 ```
+
 3. (Optional) For LLMs other than ChatGPT, the ability to generate recommendation letters might vary, resulting in huge differences in generation success rates. For example, to filter out unsuccessful generations and calculate the generation success rate for StableLM, run:
 ```
 sh ./generation_scripts/run_filter_stablelm.sh
 ```
+
 Note that ChatGPT is great for generating recommendation letters in terms of generation success rate, so no need to run Step 3 for ChatGPT.
+
 Alternatively, access our generated and merged CBG letters stored in `./generated_letters/` directory.
+
 - ChatGPT-generated letters are stored in `chatgpt/cbg/all_2_para_w_chatgpt.csv`
 
 ## Recommendation Letter Evaluation
@@ -41,6 +51,7 @@ sh ./evaluation_scripts/run_bias_clg.sh
 
 ### Context-Based Generation (CBG)
 Under CBG setting, we evaluate generated letters from two perspectives: **Biases in Lexical Content** and **Biases in Language Style**. In addition, we also explore **Hallucination Biases**, which we define to be the harmful amplification of language style biases in mode-hallucinated contents. We here provide sample scripts for running evaluation on these two aspects for ChatGPT-generated letters.
+
 #### Biases in Lexical Content
 To evaluate Biases in Lexical Content for ChatGPT-generated letters, run:
 ```
@@ -50,11 +61,14 @@ sh ./evaluation_scripts/run_lexical_content_eval.sh
 #### Biases in Language Style
 Before running evaluation on biases in language style, make sure that you have trained your own Language Agency Classifier or have downloaded our trained classifier checkpoint in Google Drive via link:
 > https://drive.google.com/drive/folders/119pIbWMrNLwOCxj9XwTBXA-kY02nytOc?usp=drive_link
+
 You should then place the downloaded checkpoint folder under the `/agency_classifier/checkpoints/` directory.
-Then, to evaluate Biases in Language Style for ChatGPT-generated letters, run:
+
+Next, to evaluate Biases in Language Style for ChatGPT-generated letters, run:
 ```
 sh ./evaluation_scripts/run_language_style_eval.sh
 ```
+
 Result of evaluation will be saved in the `/evaluated_letters/chatgpt/cbg/` directory. Alternatively, you can directly run a t-test using our experiment output file at `/evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval.csv` by running:
 ```
 python ttest.py -if ./evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval.csv
@@ -62,15 +76,19 @@ python ttest.py -if ./evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval.cs
 
 #### Hallucination Biases
 To evaluate Hallucination Biases for generated letters, we first use a Context-Sentence hallucination detection mechanism to detect hallucinated sentences in generated letters, and then conduct statistical t-testing between the hallucinated parts and the original letters.
+
 1. Hallucination detection. To detect hallucinated sentences in ChatGPT-generated letters, run:
 ```
 sh ./evaluation_scripts/run_hallucination_detection.sh
 ```
+
 Result of hallucination detectrion will be saved in the `/evaluated_letters/chatgpt/cbg/` directory. Alternatively, use our output file at `/evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval_hallucination.csv`
+
 2. Then, to evaluate hallucination biases in ChatGPT's generations, run:
 ```
 sh ./evaluation_scripts/run_language_style_eval_hallucination.sh
 ```
+
 Similar to Biases in Language Style on the original letter, Result of evaluation for hallucination biases will be saved in the `/evaluated_letters/chatgpt/cbg/` directory. Alternatively, you can directly run a t-test using our experiment output file at `/evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval_hallucination-eval.csv` by running:
 ```
 python ttest.py -if ./evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval_hallucination-eval.csv --eval_hallucination_part
