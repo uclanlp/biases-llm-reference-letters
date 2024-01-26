@@ -47,7 +47,7 @@ def run_inference(df, INPUT, TASK, is_sentencelevel=True):
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument("--input_file", type=str, default="./evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval.csv")
+    parser.add_argument("-if", "--input_file", type=str, default="./evaluated_letters/chatgpt/cbg/all_2_para_w_chatgpt-eval.csv")
     parser.add_argument("-m", "--model_type", type=str, default="chatgpt")
     parser.add_argument("-r", "--report_classifier_acc", action="store_true")
     # Evaluation on the hallucinated part of generated letters
